@@ -4,7 +4,7 @@
 
 A plugin to preview Ansys Fluent cas.h5 file.
 
-![](./example/example.png)
+<img src="./example/example.png" alt="preview window" width="80%">
 
 ## Note
 > [!NOTE]
