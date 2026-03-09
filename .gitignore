@@ -329,5 +329,8 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
 /*.qlplugin
-/GitVersion.cs
-/QuickLook.Plugin.Metadata.config
+
+# others
+fluent-*.trn
+test.msh.*
+test.scdocx
