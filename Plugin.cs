@@ -24,6 +24,7 @@ public class Plugin : IViewer
     {
         context.PreferredSize = new Size { Width = 600, Height = 600 };
     }
+
     public void View(string path, ContextObject context)
     {
         string content = CasH5.Read(path);
