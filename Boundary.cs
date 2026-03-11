@@ -129,10 +129,9 @@ public static class BoundaryFactory
                     if (lst.Count >= 2)
                     {
                         key = lst[0].AsSymbol().Name.Replace("-", "").Replace("?", "").ToLower();
-                        if (!valid_properties.Contains(key) || string.IsNullOrEmpty(key))
+                        if (!valid_properties.Contains(key))
                             continue;
-                        var constant_pair = lst[1].AsPair();
-                        value = constant_pair.Cdr.ToString();
+                        value = lst[1].AsPair().Cdr.ToString();
                     }
                     else continue;
                 }
@@ -144,9 +143,10 @@ public static class BoundaryFactory
                         continue;
                     value = pair.Cdr.ToString();
                 }
+
                 var prop = boundary_type.GetProperty(key,
                     BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
-                if (prop != null && prop.CanWrite)
+                if (prop is not null && prop.CanWrite)
                     prop.SetValue(boundary, value, null);
             }
 

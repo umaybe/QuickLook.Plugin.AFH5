@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using System.Windows;
-using System.Windows.Media;
 using System.Windows.Controls;
 
 using QuickLook.Common.Plugin;
@@ -33,10 +32,11 @@ public class Plugin : IViewer
         {
             Text = content,
             IsReadOnly = true,
+            IsReadOnlyCaretVisible = true,
+            Padding = new Thickness(10),
             TextWrapping = TextWrapping.Wrap,
             BorderThickness = new Thickness(0),
-            Padding = new Thickness(10),
-            FontFamily = new FontFamily("Consolas")
+            Margin = new Thickness(0, 0, 0, -5)
         };
 
         var scrollViewer = new ScrollViewer
