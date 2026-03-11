@@ -18,7 +18,7 @@ After opening cas.h5 with HDFView, it was found that it contains the following g
 2. settings
 3. special
 
-The **settings** group contains multiple datasets, which contain the simulation configuration information stored as S-expression strings.
+The **settings** group contains multiple datasets, which contain the simulation configuration information stored as S-expression strings which you can find in the **example** folder.
 
 1. Cortex Variables: Face IDs and display settings
 2. Domain Variables: Meaning unclear (e.g. (64 ()))
@@ -44,7 +44,7 @@ This plugin now only show the most frequent information, including:
 - under-relaxation factor
 - iteration
 
-PRs are welcome to add more.
+They are extracted by regular expression or S-expression parser. PRs are welcome to add more.
 
 ## Try out
 
