@@ -31,7 +31,7 @@ The **settings** group contains multiple datasets, which contain the simulation 
 
 ## Note
 
-> [!NOTE]
+> [!IMPORTANT]
 > Only tested with Ansys Fluent 2025 R2.
 
 This plugin now only show the most frequent information, including:
@@ -56,4 +56,4 @@ They are extracted by regular expression or S-expression parser. PRs are welcome
 
 ## License
 
-MIT.
+MIT
