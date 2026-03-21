@@ -10,6 +10,8 @@ A plugin to preview Ansys Fluent cas.h5 file.
 
 For an introduction to the H5 format, you can refer to this [article](https://optics.ansys.com/hc/en-us/articles/360034936913-HDF5-files).
 
+For an introduction to the CFF format, you can refer to this [article](https://ansyshelp.ansys.com/public/account/secured?returnurl=/Views/Secured/corp/v252/en/flu_ug/flu_ug_app_cff.html).
+
 <img src="./example/hdf5.png" alt="structure of cas.h5" width="40%">
 
 After opening cas.h5 with HDFView, it was found that it contains the following groups:
