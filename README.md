@@ -14,7 +14,7 @@ For an introduction to the CFF format, you can refer to this [article](https://a
 
 <img src="./example/hdf5.png" alt="structure of cas.h5" width="40%">
 
-After opening cas.h5 with HDFView, it was found that it contains the following groups:
+After opening `.cas.h5` file using HDFView, there are following groups:
 
 1. meshes
 2. settings
@@ -28,7 +28,7 @@ The **settings** group contains multiple datasets, which contain the simulation 
 4. [Rampant Variables](https://innovationspace.ansys.com/forum/forums/topic/what-does-rp-in-rp-variable-stand-for/): Most settings
 5. Solver: Solver information (e.g. ANSYS_FLUENT)
 6. TGrid Variables: Geometry mesh related
-7. Thread Variables: Cell zone and boundary condition settings
+7. Thread Variables: Cell zone and boundary condition
 8. Version: Version information (e.g. 25.2)
 
 ## Note
@@ -55,6 +55,12 @@ They are extracted by regular expression or S-expression parser. PRs are welcome
 3. Click the “Install” button in the popup window.
 4. Restart QuickLook.
 5. Select the cas.h5 file and press `Spacebar`.
+
+## Thanks
+
+- [QuickLook](https://github.com/QL-Win/QuickLook): Bring macOS “Quick Look” feature to Windows
+- [PureHDF](https://github.com/Apollo3zehn/PureHDF): A pure .NET library that makes reading and writing of HDF5 files (groups, datasets, attributes, ...) very easy.
+- [Untitled.Sexp](https://github.com/salyu9/Untitled.Sexp): Simple .Net library for reading, writing and serializing s-expressions.
 
 ## License
 
