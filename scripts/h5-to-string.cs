@@ -6,7 +6,7 @@
 
 using PureHDF;
 
-var file = H5File.OpenRead(args[0]);
+using var file = H5File.OpenRead(args[0]);
 var settings = file.Group("/settings");
 var datasets = new string[]
 {

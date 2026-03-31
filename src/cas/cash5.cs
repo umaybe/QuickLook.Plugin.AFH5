@@ -13,7 +13,7 @@ public class CasH5
 {
     public static string Read(string path)
     {
-        var File = H5File.OpenRead(path);
+        using var File = H5File.OpenRead(path);
 
         var Settings = File.Group("/settings");
 
