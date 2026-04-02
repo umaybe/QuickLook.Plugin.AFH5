@@ -46,7 +46,6 @@ public class Plugin : IViewer
             HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled,
             VerticalAlignment = VerticalAlignment.Stretch,
             HorizontalAlignment = HorizontalAlignment.Stretch,
-            Padding = new Thickness(5)
         };
 
         context.ViewerContent = scrollViewer;
