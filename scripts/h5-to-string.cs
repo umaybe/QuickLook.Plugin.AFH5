@@ -23,5 +23,5 @@ var datasets = new string[]
 foreach (var dataset in datasets)
 {
     var data = settings.Dataset(dataset).Read<string>();
-    System.IO.File.WriteAllText($"{dataset}.scm", data, System.Text.Encoding.UTF8);
+    File.WriteAllText($"{dataset}.scm", data, System.Text.Encoding.UTF8);
 }
