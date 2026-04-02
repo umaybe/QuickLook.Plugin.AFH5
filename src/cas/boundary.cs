@@ -155,7 +155,7 @@ public static class BoundaryFactory
                             var source_type = lst[1].AsPair().Car.ToString();  // energy
                             var cdr_value = lst[1].AsPair().Cdr;
                             if (cdr_value == SValue.Null) continue;
-                            var source_value = cdr_value.AsPair().Cdr.ToList();
+                            var source_value = cdr_value.AsPair().Car.ToList();
                             var source_profile = source_value[0].ToList();
                             var profile_type = source_profile[1].AsString();  // udf
                             var profile_name = source_profile[2].AsString();  // energy_source_hv
