@@ -4,8 +4,6 @@ VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickLook.Plugin.AFH5", "QuickLook.Plugin.AFH5.csproj", "{C9FA19CC-5D8A-1D03-6AE4-C9D24AB0338A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickLook.Common", "QuickLook.Common\QuickLook.Common.csproj", "{C0B712C1-BD5A-908D-3510-F19986305328}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -16,15 +14,11 @@ Global
 		{C9FA19CC-5D8A-1D03-6AE4-C9D24AB0338A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9FA19CC-5D8A-1D03-6AE4-C9D24AB0338A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9FA19CC-5D8A-1D03-6AE4-C9D24AB0338A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C0B712C1-BD5A-908D-3510-F19986305328}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C0B712C1-BD5A-908D-3510-F19986305328}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C0B712C1-BD5A-908D-3510-F19986305328}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C0B712C1-BD5A-908D-3510-F19986305328}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {75ADE79F-B71A-4156-9265-CA0E49074CD1}
+		SolutionGuid = {9FECCCFA-B9F0-4029-9860-B0937960469C}
 	EndGlobalSection
 EndGlobal

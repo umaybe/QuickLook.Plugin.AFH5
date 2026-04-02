@@ -4,7 +4,6 @@
 
 #:package PureHDF@1.0.1
 
-using System.IO;
 using PureHDF;
 
 using var file = H5File.OpenRead(args[0]);
