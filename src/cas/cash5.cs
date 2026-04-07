@@ -63,6 +63,18 @@ public class CasH5
         SolverEnergy = SolverEnergy.Contains("#t") ? "true" : "false";
         InfoNeed += $"Solver Energy: {SolverEnergy}\n";
 
+        string? SolverRadiation = GetRadiationModel(CaseConfig);
+        if (SolverRadiation is not null)
+        {
+            InfoNeed += $"Solver Radiation: {SolverRadiation}\n";
+            if (SolverRadiation == "DO")
+            {
+                string isCoupled = Regex.Match(GeneralInfo, @"\(disco/coupled\?\s+([^)\s]+)\)").Value;
+                isCoupled = isCoupled.Contains("#t") ? "true" : "false";
+                InfoNeed += $"DO/Energy Coupling: {isCoupled}\n";
+            }
+        }
+
         string Gravity = Regex.Match(GeneralInfo, @"\(gravity\?\s+([^)\s]+)\)").Value;
         Gravity = Gravity.Contains("#t") ? "true" : "false";
         InfoNeed += $"Gravity: {Gravity}\n";
@@ -105,6 +117,10 @@ public class CasH5
         string PressureScheme = SCHEME_ENUM.GetValueOrDefault(PressureSchemeIndex, "");
         InfoNeed += $"Pressure Scheme: {PressureScheme}\n";
 
+        // string densitySchemeIndex = Regex.Match(GeneralInfo, @"\(density/scheme\s+(\d+)\)").Groups[1].Value;
+        // string densityScheme = SCHEME_ENUM.GetValueOrDefault(densitySchemeIndex, "");
+        // InfoNeed += $"Density Scheme: {densityScheme}\n";
+
         string MomSchemeIndex = Regex.Match(GeneralInfo, @"\(mom/scheme\s+(\d+)\)").Groups[1].Value;
         string MomScheme = SCHEME_ENUM.GetValueOrDefault(MomSchemeIndex, "");
         InfoNeed += $"Mom Scheme: {MomScheme}\n";
@@ -131,6 +147,13 @@ public class CasH5
             string OmegaScheme = SCHEME_ENUM.GetValueOrDefault(OmegaSchemeIndex, "");
             InfoNeed += $"Omega Scheme: {OmegaScheme}\n";
         }
+
+        if (SolverRadiation == "DO")
+        {
+            string DOSchemeIndex = Regex.Match(GeneralInfo, @"\(disco/scheme\s+(\d+)\)").Groups[1].Value;
+            string DOScheme = SCHEME_ENUM.GetValueOrDefault(DOSchemeIndex, "");
+            InfoNeed += $"DO Scheme: {DOScheme}\n";
+        }
         InfoNeed += "\n";
 
         // Get under-relaxation factor info
@@ -139,6 +162,12 @@ public class CasH5
 
         string MomRelax = Regex.Match(GeneralInfo, @"\(mom/relax\s+([\d.]+)\)").Groups[1].Value;
         InfoNeed += $"Under-Relaxation Factor for momentum: {MomRelax}\n";
+
+        // string DensityRelax = Regex.Match(GeneralInfo, @"\(density/relax\s+([\d.]+)\)").Groups[1].Value;
+        // InfoNeed += $"Under-Relaxation Factor for density: {DensityRelax}\n";
+
+        // string BodyForceRelax = Regex.Match(GeneralInfo, @"\(body-force/relax\s+([\d.]+)\)").Groups[1].Value;
+        // InfoNeed += $"Under-Relaxation Factor for body force: {BodyForceRelax}\n";
 
         string TempRelax = Regex.Match(GeneralInfo, @"\(temperature/relax\s+([\d.]+)\)").Groups[1].Value;
         InfoNeed += $"Under-Relaxation Factor for temperature: {TempRelax}\n";
@@ -157,6 +186,16 @@ public class CasH5
             string OmegaRelax = Regex.Match(GeneralInfo, @"\(omega/relax\s+([\d.]+)\)").Groups[1].Value;
             InfoNeed += $"Under-Relaxation Factor for omega: {OmegaRelax}\n";
         }
+
+        if (SolverRadiation == "DO")
+        {
+            string DORelax = Regex.Match(GeneralInfo, @"\(disco/relax\s+([\d.]+)\)").Groups[1].Value;
+            InfoNeed += $"Under-Relaxation Factor for DO: {DORelax}\n";
+        }
+
+        // string TurbViscosityRelax = Regex.Match(GeneralInfo, @"\(turb-viscosity/relax\s+([\d.]+)\)").Groups[1].Value;
+        // InfoNeed += $"Under-Relaxation Factor for turb-viscosity: {TurbViscosityRelax}\n";
+
         InfoNeed += "\n";
 
         // Get residuals info
@@ -216,6 +255,23 @@ public class CasH5
         };
 
         return models.FirstOrDefault(m => cfg.GetValueOrDefault(m.Key) == "#t").Value ?? "Unknown";
+    }
+
+    private static string? GetRadiationModel(string CaseConfig)
+    {
+        var cfg = Regex
+            .Matches(CaseConfig, @"\(([^()\s]+)\s+\.\s+([^()\s]+)\)")
+            .Cast<Match>()
+            .ToDictionary(
+                m => m.Groups[1].Value,
+                m => m.Groups[2].Value
+            );
+        if (cfg.GetValueOrDefault("sg-rosseland?") == "#t") return "Rosseland";
+        if (cfg.GetValueOrDefault("sg-p1?") == "#t") return "P1";
+        if (cfg.GetValueOrDefault("sg-dtrm?") == "#t") return "DTRM";
+        if (cfg.GetValueOrDefault("sg-s2s?") == "#t") return "S2S";
+        if (cfg.GetValueOrDefault("sg-disco?") != "#f") return "DO";
+        return null;
     }
 
     private static Dictionary<string, Tuple<string, string>> GetGravityValue(string GeneralInfo)
@@ -301,9 +357,9 @@ public class CasH5
         throw new InvalidCastException($"Cannot convert SValue of type {value.Type} to double");
     }
 
-    // From context.scm
     private static readonly Dictionary<string, string> SCHEME_ENUM = new()
     {
+        // From context.scm
         ["0"] = "First Order Upwind",
         ["1"] = "Second Order Upwind",
         ["2"] = "Power Law",

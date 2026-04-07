@@ -17,81 +17,81 @@ public interface IBoundary
 public class Fluid : IBoundary
 {
     public string Type => "fluid";
-    public string Name { get; init; }
-    public string Id { get; init; }
-    public string Material { get; set; }
-    public string Sources { get; set; }
-    public string SourceTerms { get; set; }
+    public required string Name { get; init; }
+    public required string Id { get; init; }
+    public string? Material { get; set; }
+    public string? Sources { get; set; }
+    public string? SourceTerms { get; set; }
 }
 
 public class Solid : IBoundary
 {
     public string Type => "solid";
-    public string Name { get; init; }
-    public string Id { get; init; }
-    public string Material { get; set; }
-    public string Sources { get; set; }
-    public string SourceTerms { get; set; }
+    public required string Name { get; init; }
+    public required string Id { get; init; }
+    public string? Material { get; set; }
+    public string? Sources { get; set; }
+    public string? SourceTerms { get; set; }
 }
 
 public class VelocityInlet : IBoundary
 {
     public string Type => "velocity-inlet";
-    public string Name { get; init; }
-    public string Id { get; init; }
-    public string Vmag { get; set; }
-    public string T { get; set; }
-    public string TurbIntensity { get; set; }
-    public string TurbHydraulicDiam { get; set; }
-    public string TurbViscosityRatio { get; set; }
+    public required string Name { get; init; }
+    public required string Id { get; init; }
+    public string? Vmag { get; set; }
+    public string? T { get; set; }
+    public string? TurbIntensity { get; set; }
+    public string? TurbHydraulicDiam { get; set; }
+    public string? TurbViscosityRatio { get; set; }
 }
 
 public class MassFlowInlet : IBoundary
 {
     public string Type => "mass-flow-inlet";
-    public string Name { get; init; }
-    public string Id { get; init; }
-    public string MassFlow { get; set; }
-    public string T { get; set; }
-    public string TurbIntensity { get; set; }
-    public string TurbHydraulicDiam { get; set; }
-    public string TurbViscosityRatio { get; set; }
+    public required string Name { get; init; }
+    public required string Id { get; init; }
+    public string? MassFlow { get; set; }
+    public string? T { get; set; }
+    public string? TurbIntensity { get; set; }
+    public string? TurbHydraulicDiam { get; set; }
+    public string? TurbViscosityRatio { get; set; }
 }
 
 public class PressureOutlet : IBoundary
 {
     public string Type => "pressure-outlet";
-    public string Name { get; init; }
-    public string Id { get; init; }
-    public string P { get; set; }
-    public string TurbIntensity { get; set; }
-    public string TurbHydraulicDiam { get; set; }
-    public string TurbViscosityRatio { get; set; }
+    public required string Name { get; init; }
+    public required string Id { get; init; }
+    public string? P { get; set; }
+    public string? TurbIntensity { get; set; }
+    public string? TurbHydraulicDiam { get; set; }
+    public string? TurbViscosityRatio { get; set; }
 }
 
 public class Wall : IBoundary
 {
     public string Type => "wall";
-    public string Name { get; init; }
-    public string Id { get; init; }
-    public string Material { get; set; }
-    public string T { get; set; }
-    public string Q { get; set; }
-    public string H { get; set; }
+    public required string Name { get; init; }
+    public required string Id { get; init; }
+    public string? Material { get; set; }
+    public string? T { get; set; }
+    public string? Q { get; set; }
+    public string? H { get; set; }
 }
 
 public class Interior : IBoundary
 {
     public string Type => "interior";
-    public string Name { get; init; }
-    public string Id { get; init; }
+    public required string Name { get; init; }
+    public required string Id { get; init; }
 }
 
 public class Axis : IBoundary
 {
     public string Type => "axis";
-    public string Name { get; init; }
-    public string Id { get; init; }
+    public required string Name { get; init; }
+    public required string Id { get; init; }
 }
 
 public static class BoundaryFactory
@@ -138,8 +138,8 @@ public static class BoundaryFactory
 
             foreach (var property in properties.AsEnumerable())
             {
-                string key = null;
-                string value = null;
+                string? key = null;
+                string? value = null;
 
                 if (property.IsList)
                 {
