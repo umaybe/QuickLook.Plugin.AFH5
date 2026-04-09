@@ -4,8 +4,7 @@
 
 A plugin to preview Ansys Fluent cas.h5 and msh.h5 file.
 
-<img src="./example/cas_example.png" alt="cas example" width="48%">
-<img src="./example/msh_example.png" alt="msh example" width="48%">
+<img src="./example/cas_example.png" alt="cas example" width="49%">  <img src="./example/msh_example.png" alt="msh example" width="49%">
 
 ## Structure of cas.h5
 
