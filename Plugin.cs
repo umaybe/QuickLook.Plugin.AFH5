@@ -1,13 +1,12 @@
 ﻿using System.IO;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Controls;
 using System.Windows.Media.Media3D;
 
 using HelixToolkit.Wpf;
-
 using QuickLook.Common.Plugin;
-using System.Windows.Input;
 
 namespace QuickLook.Plugin.AFH5;
 
@@ -27,10 +26,7 @@ public class Plugin : IViewer
 
     public void Prepare(string path, ContextObject context)
     {
-        if (path.ToLower().EndsWith(".cas.h5"))
-            context.PreferredSize = new Size { Width = 600, Height = 600 };
-        else if (path.ToLower().EndsWith(".msh.h5"))
-            context.PreferredSize = new Size { Width = 1000, Height = 500 };
+        context.PreferredSize = new Size { Width = 600, Height = 600 };
     }
 
     public void View(string path, ContextObject context)
@@ -71,7 +67,6 @@ public class Plugin : IViewer
             {
                 ZoomExtentsWhenLoaded = true,
                 ShowCoordinateSystem = true,
-                Background = Brushes.AliceBlue,
                 Orthographic = true,
                 IsRotationEnabled = mesh_data.Dimension == 3,
                 PanGesture = new MouseGesture(MouseAction.LeftClick),
@@ -93,7 +88,7 @@ public class Plugin : IViewer
             var render_points = new Point3DCollection();
             foreach (int index in mesh_data.Connections)
             {
-                if (index >= 0 && index < mesh_data.Nodes.Length)
+                if (index >= 0 && index < mesh_data.Nodes.Count)
                 {
                     render_points.Add(mesh_data.Nodes[index]);
                 }
