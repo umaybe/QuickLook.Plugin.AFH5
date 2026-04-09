@@ -2,9 +2,10 @@
 
 # QuickLook.Plugin.AFH5
 
-A plugin to preview Ansys Fluent cas.h5 file.
+A plugin to preview Ansys Fluent cas.h5 and msh.h5 file.
 
-<img src="./example/example.png" alt="preview window" width="70%">
+<img src="./example/cas_example.png" alt="cas example" width="48%">
+<img src="./example/msh_example.png" alt="msh example" width="48%">
 
 ## Structure of cas.h5
 
@@ -36,17 +37,23 @@ The **settings** group contains multiple datasets, which contain the simulation 
 > [!IMPORTANT]
 > Only tested with Ansys Fluent 2025 R2.
 
+### cas.h5
+
 This plugin now only show the most frequent information, including:
 
 - solver
 - material
 - cell zone
-- boundary
+- boundary condition
 - discretization scheme
 - under-relaxation factor
 - iteration
 
 They are extracted by regular expression or S-expression parser. PRs are welcome to add more.
+
+### msh.h5
+
+This plugin now don't support multi zone mesh and the display quality of the 3D mesh is poor.
 
 ## Try out
 
@@ -54,13 +61,14 @@ They are extracted by regular expression or S-expression parser. PRs are welcome
 2. Make sure that you have QuickLook running in the background. Go to your Download folder, and press `Spacebar` on the downloaded `.qlplugin` file.
 3. Click the “Install” button in the popup window.
 4. Restart QuickLook.
-5. Select the cas.h5 file and press `Spacebar`.
+5. Select the cas.h5/msh.h5 file and press `Spacebar`.
 
 ## Thanks
 
 - [QuickLook](https://github.com/QL-Win/QuickLook): Bring macOS “Quick Look” feature to Windows
 - [PureHDF](https://github.com/Apollo3zehn/PureHDF): A pure .NET library that makes reading and writing of HDF5 files (groups, datasets, attributes, ...) very easy.
 - [Untitled.Sexp](https://github.com/salyu9/Untitled.Sexp): Simple .Net library for reading, writing and serializing s-expressions.
+- [HelixToolkit.Wpf](https://github.com/helix-toolkit/helix-toolkit): Helix Toolkit is a collection of 3D components for .NET.
 
 ## License
 
