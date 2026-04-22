@@ -58,6 +58,18 @@ public class MassFlowInlet : IBoundary
     public string? TurbViscosityRatio { get; set; }
 }
 
+public class MassFlowOutlet : IBoundary
+{
+    public string Type => "mass-flow-outlet";
+    public required string Name { get; init; }
+    public required string Id { get; init; }
+    public string? MassFlow { get; set; }
+    public string? T { get; set; }
+    public string? TurbIntensity { get; set; }
+    public string? TurbHydraulicDiam { get; set; }
+    public string? TurbViscosityRatio { get; set; }
+}
+
 public class PressureOutlet : IBoundary
 {
     public string Type => "pressure-outlet";
@@ -94,6 +106,97 @@ public class Axis : IBoundary
     public required string Id { get; init; }
 }
 
+public class InletVent : IBoundary
+{
+    public string Type => "inlet-vent";
+    public required string Name { get; init; }
+    public required string Id { get; init; }
+}
+
+public class PressureInlet : IBoundary
+{
+    public string Type => "pressure-inlet";
+    public required string Name { get; init; }
+    public required string Id { get; init; }
+}
+
+public class IntakeFan : IBoundary
+{
+    public string Type => "intake-fan";
+    public required string Name { get; init; }
+    public required string Id { get; init; }
+}
+
+public class OutletVent : IBoundary
+{
+    public string Type => "outlet-vent";
+    public required string Name { get; init; }
+    public required string Id { get; init; }
+}
+
+public class ExhaustFan : IBoundary
+{
+    public string Type => "exhaust-fan";
+    public required string Name { get; init; }
+    public required string Id { get; init; }
+}
+
+public class Symmetry : IBoundary
+{
+    public string Type => "symmetry";
+    public required string Name { get; init; }
+    public required string Id { get; init; }
+}
+
+public class PressureFarField : IBoundary
+{
+    public string Type => "pressure-far-field";
+    public required string Name { get; init; }
+    public required string Id { get; init; }
+}
+
+public class Radiator : IBoundary
+{
+    public string Type => "radiator";
+    public required string Name { get; init; }
+    public required string Id { get; init; }
+}
+
+public class Fan : IBoundary
+{
+    public string Type => "fan";
+    public required string Name { get; init; }
+    public required string Id { get; init; }
+}
+
+public class PorousJump : IBoundary
+{
+    public string Type => "porous-jump";
+    public required string Name { get; init; }
+    public required string Id { get; init; }
+}
+
+public class Interface : IBoundary
+{
+    public string Type => "interface";
+    public required string Name { get; init; }
+    public required string Id { get; init; }
+}
+
+public class Overset : IBoundary
+{
+    public string Type => "overset";
+    public required string Name { get; init; }
+    public required string Id { get; init; }
+}
+
+public class Outflow : IBoundary
+{
+    public string Type => "outflow";
+    public required string Name { get; init; }
+    public required string Id { get; init; }
+}
+
 public static class BoundaryFactory
 {
     public static IBoundary Create(string type, string name, string id)
@@ -104,10 +207,24 @@ public static class BoundaryFactory
             "solid" => new Solid { Name = name, Id = id },
             "velocity-inlet" => new VelocityInlet { Name = name, Id = id },
             "mass-flow-inlet" => new MassFlowInlet { Name = name, Id = id },
+            "mass-flow-outlet" => new MassFlowOutlet { Name = name, Id = id },
             "pressure-outlet" => new PressureOutlet { Name = name, Id = id },
             "wall" => new Wall { Name = name, Id = id },
             "interior" => new Interior { Name = name, Id = id },
             "axis" => new Axis { Name = name, Id = id },
+            "inlet-vent" => new InletVent { Name = name, Id = id },
+            "pressure-inlet" => new PressureInlet { Name = name, Id = id },
+            "intake-fan" => new IntakeFan { Name = name, Id = id },
+            "outlet-vent" => new OutletVent { Name = name, Id = id },
+            "exhaust-fan" => new ExhaustFan { Name = name, Id = id },
+            "symmetry" => new Symmetry { Name = name, Id = id },
+            "pressure-far-field" => new PressureFarField { Name = name, Id = id },
+            "radiator" => new Radiator { Name = name, Id = id },
+            "fan" => new Fan { Name = name, Id = id },
+            "porous-jump" => new PorousJump { Name = name, Id = id },
+            "interface" => new Interface { Name = name, Id = id },
+            "overset" => new Overset { Name = name, Id = id },
+            "outflow" => new Outflow { Name = name, Id = id },
             _ => throw new NotSupportedException($"Not supported boundary type: {type}"),
         };
     }
