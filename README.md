@@ -4,13 +4,13 @@
 
 A plugin to preview Ansys Fluent cas.h5 and msh.h5 file.
 
-<img src="./example/cas_example.png" alt="cas example" width="49%">  <img src="./example/msh_example.png" alt="msh example" width="49%">
+<img src="./example/msh_example.png" alt="cas example" width="49%">  <img src="./example/cas_example.png" alt="msh example" width="49%">
 
 ## Structure of cas.h5
 
-For an introduction to the H5 format, you can refer to this [article](https://optics.ansys.com/hc/en-us/articles/360034936913-HDF5-files).
+For an introduction to the H5 format, refer to this [article](https://optics.ansys.com/hc/en-us/articles/360034936913-HDF5-files).
 
-For an introduction to the CFF format, you can refer to this [article](https://ansyshelp.ansys.com/public/account/secured?returnurl=/Views/Secured/corp/v252/en/flu_ug/flu_ug_app_cff.html).
+For an introduction to the CFF format, refer to this [article](https://ansyshelp.ansys.com/public/account/secured?returnurl=/Views/Secured/corp/v252/en/flu_ug/flu_ug_app_cff.html).
 
 <img src="./example/hdf5.png" alt="structure of cas.h5" width="40%">
 
@@ -50,10 +50,6 @@ This plugin now only show the most frequent information, including:
 
 They are extracted by regular expression or S-expression parser. PRs are welcome to add more.
 
-### msh.h5
-
-This plugin now don't support multi zone mesh and the display quality of the 3D mesh is poor.
-
 ## Try out
 
 1. Go to Release page and download the latest version.
@@ -68,6 +64,7 @@ This plugin now don't support multi zone mesh and the display quality of the 3D 
 - [PureHDF](https://github.com/Apollo3zehn/PureHDF): A pure .NET library that makes reading and writing of HDF5 files (groups, datasets, attributes, ...) very easy.
 - [Untitled.Sexp](https://github.com/salyu9/Untitled.Sexp): Simple .Net library for reading, writing and serializing s-expressions.
 - [HelixToolkit.Wpf](https://github.com/helix-toolkit/helix-toolkit): Helix Toolkit is a collection of 3D components for .NET.
+- [vtkFLUENTCFFReader](https://github.com/Kitware/VTK/tree/master/IO/FLUENTCFF): Provide a reader for the FluentCFF file format.
 
 ## License
 
