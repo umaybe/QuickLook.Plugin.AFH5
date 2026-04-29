@@ -67,23 +67,15 @@ public class Plugin : IViewer
             {
                 ZoomExtentsWhenLoaded = true,
                 ShowCoordinateSystem = true,
-                Orthographic = true,
                 IsRotationEnabled = mesh_data.Dimension == 3,
                 PanGesture = new MouseGesture(MouseAction.LeftClick),
-            };
-
-            if (mesh_data.Dimension == 2)
-            {
-                view_point.Camera = new OrthographicCamera
+                Camera = new OrthographicCamera()
                 {
                     Position = new Point3D(0, 0, 100),
-                    LookDirection = new Vector3D(0, 0, -100),
+                    LookDirection = new Vector3D(0, 0, -50),
                     UpDirection = new Vector3D(0, 1, 0),
-                    Width = 20
-                };
-            }
-
-            view_point.Children.Add(new DefaultLights());
+                }
+            };
 
             var render_points = new Point3DCollection();
             foreach (int index in mesh_data.Connections)
