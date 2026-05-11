@@ -236,7 +236,7 @@ public class CasH5
                 m => m.Groups[2].Value
             );
 
-        if (cfg.GetValueOrDefault("rp-visc") == "#f" || cfg.GetValueOrDefault("rp-inviscid") == "#t")
+        if (cfg.GetValueOrDefault("rp-visc?") == "#f")
             return "Inviscid";
 
         if (cfg.GetValueOrDefault("rp-lam?") == "#t")
